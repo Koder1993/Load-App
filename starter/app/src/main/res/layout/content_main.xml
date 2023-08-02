@@ -9,6 +9,48 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
 
+    <ImageView
+        android:id="@+id/image_download"
+        android:layout_width="0dp"
+        android:layout_height="220dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cloud_image" />
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/custom_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintTop_toBottomOf="@id/image_download">
+
+        <RadioButton
+            android:id="@+id/glide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/glide_radio_button_text" />
+
+        <RadioButton
+            android:id="@+id/loadApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/load_app_radio_button_text" />
+
+        <RadioButton
+            android:id="@+id/retrofit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/retrofit_radio_button_text" />
+
+    </RadioGroup>
+
     <com.udacity.LoadingButton
         android:id="@+id/custom_button"
         android:layout_width="0dp"
@@ -17,6 +59,7 @@
         android:layout_height="60dp"
         android:layout_margin="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.95"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
