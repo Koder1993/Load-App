@@ -19,16 +19,37 @@ class LoadingButton @JvmOverloads constructor(
 
     private var valueAnimator = ValueAnimator()
 
-    private var buttonMainColorBackground = ContextCompat.getColor(context, R.color.colorPrimary)
+    private var buttonMainColorBackground = 0
     private var buttonLoadColorBackground =
         ContextCompat.getColor(context, R.color.colorPrimaryDark)
-    private var buttonTextColor = Color.WHITE
+    private var buttonTextColor = 0
     private var buttonText = resources.getString(R.string.button_name)
 
     private var loadingCircleColor = ContextCompat.getColor(context, R.color.colorAccent)
     private var loadingButtonWidth = 0f
     private var endCircleAngle = 0f
     private var startCircleAngle = 0f
+
+    init {
+        context.theme.obtainStyledAttributes(
+            attrs,
+            R.styleable.LoadingButton,
+            0, 0
+        ).apply {
+            try {
+                buttonMainColorBackground = getColor(
+                    R.styleable.LoadingButton_backgroundColor,
+                    ContextCompat.getColor(context, R.color.colorPrimary)
+                )
+                buttonTextColor = getColor(
+                    R.styleable.LoadingButton_textColor,
+                    ContextCompat.getColor(context, R.color.white)
+                )
+            } finally {
+                recycle()
+            }
+        }
+    }
 
     private var buttonState: ButtonState by Delegates.observable(ButtonState.Completed) { _, _, new ->
         when (new) {
